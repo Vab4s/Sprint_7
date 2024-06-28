@@ -1,6 +1,6 @@
 import requests
 import allure
-from data.urls import DELETE_COURIER, LOGIN
+from data.endpoints import DELETE_COURIER, LOGIN
 
 
 @allure.step('Удаление курьера')

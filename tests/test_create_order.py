@@ -4,7 +4,7 @@ import requests
 import re
 from helpers.register_random_user import register_new_courier_and_return_login_password
 from helpers.delete_courier import delete_courier
-from data.urls import *
+from data.endpoints import *
 
 
 @allure.story('Проверка создания заказа')

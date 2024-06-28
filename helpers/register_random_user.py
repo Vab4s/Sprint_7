@@ -2,7 +2,7 @@ import requests
 import random
 import string
 import allure
-from data.urls import CREATE_COURIER
+from data.endpoints import CREATE_COURIER
 
 
 # метод генерирует строку, состоящую только из букв нижнего регистра длиной 9 символов,

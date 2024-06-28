@@ -1,6 +1,6 @@
 import requests
 import allure
-from data.urls import LIST_ORDER
+from data.endpoints import LIST_ORDER
 
 
 @allure.story('Проверка списка заказов')

@@ -3,7 +3,7 @@ import allure
 import re
 from helpers.register_random_user import register_new_courier_and_return_login_password, generate_random_string
 from helpers.delete_courier import delete_courier
-from data.urls import *
+from data.endpoints import *
 from data.response_messages import *
 
 
