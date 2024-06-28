@@ -1,18 +1,22 @@
 import requests
 import random
 import string
+import allure
 from data.urls import CREATE_COURIER
+
 
 # метод генерирует строку, состоящую только из букв нижнего регистра длиной 9 символов,
 # опционально в качестве параметра передаём длину строки
+@allure.step('Генерация данных пользователя')
 def generate_random_string(length=9):
     letters = string.ascii_lowercase
     random_string = ''.join(random.choice(letters) for i in range(length))
     return random_string
 
-# метод регистрации нового курьера возвращает список из логина, пароля и имени
-# если регистрация не удалась, возвращает пустой список
-# возвращает тело ответа и код
+
+# 'Метод регистрации нового курьера возвращает список из логина, пароля и имени, тело ответа и код.'
+# 'Если регистрация не удалась, возвращает пустой список'
+@allure.step('Регистрация нового курьера')
 def register_new_courier_and_return_login_password(account=None, custom_login=None, custom_password=None, custom_first_name=None):
 
     # создаём список, чтобы метод мог его вернуть
