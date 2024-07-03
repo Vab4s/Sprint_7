@@ -6,14 +6,14 @@ from helpers.delete_courier import delete_courier
 
 @allure.story('Проверка создания курьера')
 class TestCreateCourier:
-    @allure.step('Корректное создание курьера')
+    @allure.title('Корректное создание курьера')
     @allure.description('Заполнены все поля')
     def test_creating_courier_all_fields_filled_with_correct_data(self):
         courier, response_text, response_code = register_new_courier_and_return_login_password()
         assert response_text == SUCCESSFUL_CREATION and response_code == 201
         delete_courier(courier)
 
-    @allure.step('Создание дубликата курьера')
+    @allure.title('Создание дубликата курьера')
     @allure.description('Все поля заполнены данными уже созданного курьера')
     def test_creating_duplicate_courier(self):
         courier, _, _ = register_new_courier_and_return_login_password()
@@ -21,26 +21,26 @@ class TestCreateCourier:
         assert new_response_text['message'] == ERROR_ALREADY_EXIST and new_response_code == 409
         delete_courier(courier)
 
-    @allure.step('Создание курьера с заполнением обязательных полей')
+    @allure.title('Создание курьера с заполнением обязательных полей')
     @allure.description('Все обязательные поля ("логин" и "пароль") заполнены')
     def test_creating_courier_with_required_fields(self):
         courier, response_text, response_code = register_new_courier_and_return_login_password(custom_first_name='')
         assert response_text == SUCCESSFUL_CREATION and response_code == 201
         delete_courier(courier)
 
-    @allure.step('Создание курьера без логина')
+    @allure.title('Создание курьера без логина')
     @allure.description('Поле "логин" не заполнено')
     def test_creating_courier_with_no_login(self):
         courier, response_text, response_code = register_new_courier_and_return_login_password(custom_login='')
         assert response_text['message'] == ERROR_INSUFFICIENT_CREATION_DATA and response_code == 400
 
-    @allure.step('Создание курьера без пароля')
+    @allure.title('Создание курьера без пароля')
     @allure.description('Поле "пароль" не заполнено')
     def test_creating_courier_with_no_password(self):
         courier, response_text, response_code = register_new_courier_and_return_login_password(custom_password='')
         assert response_text['message'] == ERROR_INSUFFICIENT_CREATION_DATA and response_code == 400
 
-    @allure.step('Создание курьеров с одинаковыми логинами')
+    @allure.title('Создание курьеров с одинаковыми логинами')
     @allure.description('Создаётся курьер с логином уже существующего курьера')
     def test_creating_couriers_with_same_login(self):
         courier, _, _ = register_new_courier_and_return_login_password()

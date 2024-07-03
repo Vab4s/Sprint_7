@@ -14,7 +14,7 @@ class TestCreateOrder:
         cls.courier_data, _, _ = register_new_courier_and_return_login_password()
         cls.login, cls.password, cls.first_name = cls.courier_data
 
-    @allure.step('Проверка возможности указания в заказе цвета самоката')
+    @allure.title('Проверка возможности указания в заказе цвета самоката')
     @allure.description('Проверяется указание одного цвета отдельно, указание обоих цветов и отсутствие указания цвета')
     @pytest.mark.parametrize('color', [['BLACK'], ['GREY'], ['BLACK', 'GREY'], []])
     def test_choose_color(self, color):
